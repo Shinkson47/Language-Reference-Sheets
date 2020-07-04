@@ -1,0 +1,35 @@
+Completed
+—————————
+Python
+
+
+
+
+
+Todo
+———— 
+Dart
+Java
+Markdown
+Kotlin
+C#
+Scala
+Visual Basic
+Swift
+objective C
+Bash shell
+
+
+
+
+Sheet contents checklist
+————————————————————————
+Comments, native docs, document attributes.
+Imports / packages
+Class
+Variables, types, Access modifyers
+Scripting / functions / method / return types
+Flow control - if, else, elif, for, foreach, while
+Error handling - try, throw, catch, unhandled, etc
+Wild cards, uniqitues. 
+Keywords
