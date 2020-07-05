@@ -114,7 +114,7 @@ class ClassName:
 itterator = 0
 
 # Final marker from typing packages.
-# Closes python has to readonly or final.
+# Closest python has to readonly or final.
 # indicates to runtime to not allow modification, but does not
 # prevent reassignment.
 ITTERATE_TO: _Final = 100
