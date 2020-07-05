@@ -24,6 +24,7 @@ import random
 # Doing this removes the requirement to specify the parenting class.
 # so instead of random.randrange(),
 # just use randrange().
+from random import randrange
 from typing import _Final
 
 
