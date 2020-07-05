@@ -3,13 +3,16 @@ Completed
 Python
 
 
+In progress
+————————————
+Java
 
 
 
 Todo
 ———— 
 Dart
-Java
+
 Markdown
 Kotlin
 C#
@@ -32,4 +35,5 @@ Scripting / functions / method / return types
 Flow control - if, else, elif, for, foreach, while
 Error handling - try, throw, catch, unhandled, etc
 Wild cards, uniqitues. 
+annotations
 Keywords
