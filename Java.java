@@ -293,16 +293,18 @@ class Java {
 		while (flow) { // Whilst condition, repeat block.
 			flow = false; // Condition must be changed to stop loop.
 			continue; // Skip rest of this loop, and start next one.
-			break; // Completely break free of while loop. Wont be reached, because of the continue
+			break; 	// Completely break free of while loop. Wont be reached, because of the continue
 					// above it.
 		}
+
+		do {} while (flow);	// Essentially the exact same as while.
 
 		// Itterates over an itterateable object, such as a list or array,
 		// with the current item in i.
 		// Used for completing a task to every item in a list, or searching for an item.
 		for (Object i : new ArrayList()) {
 			continue; // Skip the rest of this block
-			break; // break out of for loop entirely. Wont be reached, because of the continue
+			break; 	// break out of for loop entirely. Wont be reached, because of the continue
 					// above it.
 		}
 
@@ -403,61 +405,72 @@ class Java {
 	  * Keywords
 
 	MODIFYERS
-	abstract
-	synchronized
-    private	
-	protected	
-	implements	
-	transient
-	public
-	extends	
-	final	
-	interface	
-	static
-	volatile
-	const*
+	abstract		-	Method with no definition. Must be contained within an abstract class. Cannot be used on vars. Sub classes must inherit.
+	synchronized	-   Method or block aqquires mutex lock. Ensures that only one thread at a time can operate on an object. Lock is released when sync code block is exited.
+	implements		- 	Specifies one or more interfaces used by a class.
+	interface		-   Declares class to be an interface.
+	extends			-	Class is an extention of another. Can only extend a single class, but extended classes can be chained.
+	throws			- 	This method can throw a runtime exception. Required where throws are not caught.
+	transient		- 	Declares element to not be a part of a serialized object.
+	native			-   Method functionality is written in a different language, not this class. Can be used to interface system calls, or make wrappers to libraies written in another language.
 
+	private			- 	Declares only accesssable within this class, and sub classes.
+	protected		-   Declares only accessable within this library namespace.
+	public			- 	Declare for public and use external to this library or programme after build.
+	final			- 	Element cannot be editied or reassigned.
+	const 			-   Reserved, unused. Presumably superceeded by final.
+	
+	static			-	Declare bound to classification, not instance.
+	volatile		-	field is volatile; reads will always be taken from main memory and never from CPU cache.
+	
 	FLOW CONTROL
-	continue	
-	for
-	if	
-	switch
-	case
-	default
-	goto*
-	do	
-	break
-	throw
-	else
-	throws
-	super	
-	while
-	try
-	return	
-	finally	
+	continue		- 	Continues to resume a the end of enclosed loop body. If labels are used, resumes at end of current label.
+	for				-	used to define a for loop
+	if				-	creates an conditional code block
+	else			-	optional addition to if, entered if statement was not true.
+	do				- 	Creates a do-while. reverse while.
+	while			-	Creates a loop which continues whilst a condition is true.
+
+	switch			- 	creates a conditional multiblock, where a block selected based on matching the input.
+	case			-	case condition for a switch
+	default			-	default case for a switch, entered if no cases matched. Optional.
+	
+	goto			-	Reserved, not used. Presumably would have been for jumping to labels.
+		
+	break			-	exits current loop body
+	throw			-	throw a runtime exception
+
+	try				- 	Attempt to perform a routine, and catch exceptions to handle locally.
+	catch			-	Used to catch and handle uncaught exceptions of matching types.
+	finally			- 	Optional try extention, always entered after try routine is complete, regardless of if an exception was thrown. Could be used to display or deal with result, for example.
+
+	return			- 	Return from current method. With void return types, this isn't required - but can be used to return early. With functions, return is required to return the output value.
 
 	GENERAL
-	new	
-	assert***
-	package	
-	this
-	import	
-	catch	
-	strictfp**	
-	instanceof
-	native		
-
+	super			-	reference to class this one extends.
+	new				- 	Create a new instance of a class
+	assert			- 	Marks that a value should be equal a specified value at this point of execution. If not, an assertion failiure is risen, causing halt or invoking debugger.
+	package			- 	Declares this file to be a member of this library package. Must be fully qualified package name, not directory or local name.
+	this			- 	Reference to the current object instance. Cannot be used statically. Typically can be ommitted.
+	import			- 	Imports a package or class for use in the current class.
+	
+	strictfp		-	Restricts rounding and precision on floating point to ensure portability; ensuring the same result on every platform, since different platforms handle and calculate floating points differently.
+	instanceof		-	system function; takes a instance and an interface, evaluating to true if the instance is compatable with the interface, identifying it as an instance of that type.
+	
 	TYPES
-	float	
-	boolean	
-	double	
-	byte
-	int	
-	short	
-	char
-	void
-	enum****
-	class	
-	long
+	boolean			-  	Single bit with two states
+	byte			-	four bits, can be set as 0x0000 or as ints between 0 and 255. Use this for positive numbers less than 255 to save memory.
+	short			-	Shortened int, whole numbers between -32,768 and 32,767. Use for smaller ints to save memory.
+	int				- 	Whole number between -2,147,483,648 and of 2,147,483,647
+	long			- 	Large int, -9223372036854775808 and 9223372036854775807. (Java does not have an unsigned int, this is best you get.)
+	float			- 	Integer with a movable decimal point
+	double			-	Double precision float
+	
+	char			-	Ascii standard character value. String is a class which stores an array of chars, not a data type.
+	void			-	Devlared no data type
+
+	class			-	Declares an object classification for properties, methods and functions.
+	enum			- 	Enumerated type, essentailly list of selectable items. All enums are an extension of the enum class.
    */
+
 }
