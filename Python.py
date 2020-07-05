@@ -24,6 +24,7 @@ import random
 # Doing this removes the requirement to specify the parenting class.
 # so instead of random.randrange(),
 # just use randrange().
+from random import randrange
 from typing import _Final
 
 
@@ -113,7 +114,7 @@ class ClassName:
 itterator = 0
 
 # Final marker from typing packages.
-# Closes python has to readonly or final.
+# Closest python has to readonly or final.
 # indicates to runtime to not allow modification, but does not
 # prevent reassignment.
 ITTERATE_TO: _Final = 100
