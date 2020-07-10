@@ -1,28 +1,23 @@
 Completed
 —————————
-Python
-
+Python (May revise it tho)
+Java
 
 In progress
 ————————————
-Java
-
+C#
+Dart
 
 
 Todo
 ———— 
-Dart
-
 Markdown
 Kotlin
-C#
 Scala
 Visual Basic
 Swift
 objective C
 Bash shell
-
-
 
 
 Sheet contents checklist

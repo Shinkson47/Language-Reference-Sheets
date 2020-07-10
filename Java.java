@@ -105,10 +105,10 @@ class Java {
 	// =/= statements =/= an instruction
 
 	// Java can have regions, similar to c#'s '#region', just written as comments.
-	// #region example
+	//#region example
 	// IntelliJ and VS Code can fold (collapse) these regions with an arrow by the
 	// line numbers. I presume eclipse can too.
-	// #endregion
+	//#endregion
 
 	/**
 	 * Java class level property.
