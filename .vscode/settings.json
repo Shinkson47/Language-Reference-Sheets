@@ -1,0 +1,4 @@
+{
+	"python.pythonPath": "/usr/local/bin/python3",
+	"java.format.settings.url": "eclipse-formatter.xml"
+}
