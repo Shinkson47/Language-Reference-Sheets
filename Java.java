@@ -527,10 +527,18 @@ public final class Java implements Serializable {
 	}
 
 	/**
-	 * Classified object within a class. Example of extention, and a custom
-	 * exception.
+	 * Classified object within a class.
+	 * 
+	 * Also known as subclasses (can be confused with extention subclasses) or
+	 * better known as non-top level classes.
 	 * 
 	 * 
+	 * These can be useful to define small classes, such as exceptions or custom
+	 * data containers, that're only used locally or in relation to the parenting
+	 * class. If this could be re-used in relation to another class, define it in
+	 * it's own class.
+	 * 
+	 * Example of extention, and a custom exception.
 	 * 
 	 * 
 	 * Exceptions are a class with error information. All exceptions extend
@@ -564,6 +572,49 @@ public final class Java implements Serializable {
 			// It may still be handled, there's no way to know here.
 			JOptionPane.showMessageDialog(null, customExceptionMessage); // Display message in message dialog, with null
 																			// parent.
+		}
+	}
+
+	/**
+	 * Furthermore, this class shows how understanding trees of object inheritance
+	 * are important for extentions.
+	 * 
+	 * This is what our linear type extention tree looks like, there is only one
+	 * branch. Note that all classes are inherently extentions of 'java.lang.Class',
+	 * which extends 'java.lang.Object'.
+	 *
+	 * Object => Class => a => b
+	 */
+	@SuppressWarnings({ "unused", "static-access" })
+	public static class inheritance {
+
+		/**
+		 * Class 'a' will serve as the top level of our branch.
+		 */
+		private static class a {
+			public static final int MEMBER_OF_A = 1;
+		}
+
+		/**
+		 * Class 'b' is only second level in the branch.
+		 */
+		private class b extends a {
+			public static final int MEMBER_OF_B = 1;
+		}
+
+		/**
+		 * As a type of 'a', this variable can store any instance of 'a', or classes
+		 * that extend it - however anything added in an extention will not be
+		 * accessable.
+		 * 
+		 * Refferences to this variable will only see the type 'a', and thus only be
+		 * able to access the members of 'a'.
+		 */
+		private a _instance = new b();
+
+		private void accessTree() {
+			int i = _instance.MEMBER_OF_A; // Possible
+			i = _instance.MEMBER_OF_B; // Not Possible
 		}
 	}
 
