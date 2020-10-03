@@ -31,27 +31,30 @@
  * JavaDocs title
  * 
  * Javadocs element description. Javadocs is the documentation standard for all java elements.
- * It is not included in compiled bytecode, it is intended to help humans looking at your source.
+ * It is not included in compiled bytecode, but it is published in released library JAR's.
+ * it is intended to help humans that're using your API, even if they cannot view your source,
+ * serving as a summary and guide for your symbols.
+ * 
  * Including yourself when you forget how your own code works 2 weeks from now.
  * 
- * Javadocs supports some HTML style tags such as <c>code snippet</c>, <i>italic</i>, etc.
+ * Javadocs are writting in HTML, meaning HTML tags are supported such as <p></p>, <a href="#{@link}">{@link URL}</a>, <i>italic</i>, <em>emphasized</em> etc.
  * 
- * Notes to API users. These are rendered differently in IDE's, 
- * isolating the most important information about a symbol from the general description
+ * Tag notes to API users. These are rendered differently in IDE's, 
+ * they isolate the most important information about a symbol from the general description
  * 
- * @apiNote		Note to a user of your API. 	(You should initialise this thing first!)
- * @implNote	Implementation note				(When you implement, remember that you need to do this)
+ * @apiNote		Note to a user of your API. 	(You should initialise this thing before using this method!)
+ * @implNote	Implementation note				(When you implement, remember that you need to do this to your parameters else you may enounter maloperation)
  * @implSpec	Implementation specification 	(custom requirements / rules for a user to correctly implement your api call.)
  * 
- * @deprecated	This should no longer be used. May provide replacement, and version in which this will be removed.
- * @see			Look at this (Reference page, documentation, etc)
+ * @deprecated	Indicates that this should no longer be used. May provide alternative, and version in which this symbo will be removed.
+ * @see			Look at this (Reference page, documentation, another symbol etc)
  * 
  * 
  * @serial		This symbol is serializable (see Java's Serializable documentation)
  * @serialField "" field
  * @serialData	"" data
  * 
- * @since		The project version this symbol was added
+ * @since		The project / library version this symbol was added
  * @version		Version of this symbol. Change when a symbol is modified.
  * @author		Creator of symbol, typically a class.
  * 
@@ -62,7 +65,7 @@
  * 
  * @CustomTag   You can use any tag you like, Create your own standards - but don't expect them to be rendered with special treatment on api user's IDE's.
  * 
- * Proposed by Oracle, not implemented.
+ * Tags proposed by Oracle but not (yet) implemented :
  * @category	For logically grouping classes, methods, fields. May get shortened to @cat.
  * @example  	Example usage of element
  * @tutorial	link to a tutorial. Essentially equal to @see.
@@ -70,16 +73,16 @@
  * @internal	Holds note that's internal to the production company only.
  */
 
-// Package level elements.
+// Package level elements. (Directly in the file, not inside a class.)
 // Few things can be at package level in a java file.
-// 1) package decleration
-// 2) imports
-// 3) object (Class, enum, interface, annotation)
+// 1) Meta (package decleration, imports, Annotation)
+// 2) object (Class, enum, interface, annotation)
 
 // package
 // Packages are intelligently infered from directory, but classes MUST declare themselves
 // to be in the package with the first line in the FILE, NOT CLASS.
 // i.e package com.shinkson47.playground.tools;
+// package names should NOT contain ANY capitalized or special characters.
 
 // imports
 // To access other packages, they must be imported.
@@ -94,7 +97,7 @@
 // PC  - Alt      + Shift ⇧ + o
 
 // Import all in package with
-// library.package.*
+// import library.package.*;
 // Symbols in the same package level do not require importing.
 
 import java.awt.event.KeyEvent;
