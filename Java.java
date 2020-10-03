@@ -93,7 +93,10 @@
 // Mac - Option ⌥ + Shift ⇧ + o
 // PC  - Alt      + Shift ⇧ + o
 
-// Import all in package
+// Import all in package with
+// library.package.*
+// Symbols in the same package level do not require importing.
+
 import java.awt.event.KeyEvent;
 import java.io.Serializable;
 import java.lang.annotation.ElementType;
@@ -105,12 +108,69 @@ import java.util.ArrayList;
 
 import javax.swing.JOptionPane;
 
-// classes in the same package level do not require importing.
+/*
+	Basic anatomy of a Java Symbol Definition.
+
+	1) access modifyer (Determines what objects may access this symbol).
+	2) static and/or final decleration ()
+	3) Type Parameter (For methods, optional, advanced feature. Used for abstraction.)
+	4) Type (Return / Value.)
+	5) Symbol Name (Method convention is verbAdjective)
+	6) Braces (Indicates invokability - there's an invokable body of code. contains parameters.)
+	7) Throws (Declares that this method may throw a throwable notification when called. 
+				This may be an Exception, indicating an error, or some other kind of progromatic notification. 
+				These declerations must be handled by the code that calls the function.)
+	8) Body (Invokable code content)
+	9) return <ReturnType>value - (Sets the value that the call to this method will evaluate to, and returns to the method call.)
+
+	Symbol Definition:
+
+	public static final int calculateNumber(int param1, int param2) throws NumberException {
+		// body content
+		return result;
+	}
+
+	Signature of above symbol definition:
+
+	public int calculateNumber(int, int)
+*/
+
+// Convention for reffering to a member of a symbol (I.e a method in a class)
+// progromatically, a period is used, i.e :
+// class.Method();
+// However, in writing such as documentation, '#' is used instead. Progromatic syntax is also omited :
+// class#method
+
+// Symbols: 
+
+// {} indicates a collection of executable statements.
+// <> indicates a type parameter
+// \  escape character (Reverse solidus)
+// () Mathmatical / Logical grouping. Executed first in calculation.
+//    Also indicates invokability, and contains
+// &  Bitwise AND : 
+//    When comparing, directly validates the bits of BOTH operands at a bit level.
+//    Both operands WILL be evaluated. for example;
+//    j & (y != 0)
+//    Essentailly, both 'j' and (y != 0) will be evaluated THEN & will be performed on the bit 
+//    result of both operands.
+
+// && Locical AND :
+//    Compares the evaluation value of both operands, itself evaluating to true of both results are true.
+//    Because a true value from this expression REQUIRES BOTH operands to evaluate as true, this
+//    has a behaviour whereby it will stop evaluating if any operand is not true.
+//    This behaviour can be used to evaluate an expression only if a condition is met;
+//    i.e : bool x = j && (y != 0)
+//    This example would only exaluate the result of (y != 0) if j is true.
+
+// Similarly, Bitwise and logical OR
+// exprA | exprB <-- this means evaluate exprA then evaluate exprB then perform | on the results.
+// exprA || exprB <-- this means evaluate exprA, if false evaluate exprB and do the ||.
 
 /**
- * Java is OOP only, however it can behave as a scripting language by using
- * static methods (Methods that do not belong to or act on an instance of an
- * object)
+ * Java is OOP only, however it can behave as a scripting language by with the
+ * use of static methods (Methods that do not belong to or act on an instance of
+ * an object)
  *
  * Java files must contain a class. Every symbol must belong to a class. Classes
  * can be used to define an object, abstract, interface,
