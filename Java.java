@@ -545,8 +545,12 @@ public final class Java implements Serializable {
 					// should indicate this cannot be reached, because of the continue above it.
 		}
 
+
+		// A while loop, but the body is defined before the condition.
+		// The only differece being the body of a do while will ALWAYS be executed at least once, before the condition is
+		// evaluated.
 		do {
-		} while (flow); // A while loop, but the body is defined before the condition
+		} while (flow);
 
 		// Itterates over an itterateable object instance, such as a list or array of
 		// items.
