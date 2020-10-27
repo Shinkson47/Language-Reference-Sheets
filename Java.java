@@ -677,7 +677,26 @@ public final class Java implements Serializable {
 
 		private void accessTree() {
 			int i = _instance.MEMBER_OF_A; // Possible
-			i = _instance.MEMBER_OF_B; // Not Possible
+				i = _instance.MEMBER_OF_B; // Not Possible
+		}
+
+		/**
+		 * Variable scopes are inherited from context.
+		 * 
+		 * In the example below, the symbol 'i' reffers to the most local symbol,
+		 * which is the parameter 'i'.
+		 * 
+		 * However, in setters and constructors, or other methods with ambiguous symbol names,
+		 * you can you can specify the scope by using an object reference.
+		 * 
+		 * In this case, we're referencing this object instance, and it's field 'i',
+		 * setting it equal to the local symbol 'i'.
+		 * 
+		 * This method of ambiguity is called shadowing.
+		 */
+		private short i = 0;
+		private void shadowing(short i){
+			this.i = i;
 		}
 	}
 
