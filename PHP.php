@@ -27,6 +27,23 @@ $referenceName = $varName;
  * Referencing zvals within a string is essentially the same as bash.
  */
 $interpolation = "name is $varName";
+var_dump($interpolation);
+
+/**
+ * SINGLE QUOTE VS DOUBLE QUOTE STRINGS
+ * Simply, single quote strings prevent any evaluation being completed within the string.
+ * You'll see within PHPStorm that the $varname in the string above is purple, but the one below is not.
+ *
+ * These will evaluate as such
+ * ABOVE : name is literal
+ * BELOW : name is $varName
+ *
+ * The purpose of this is to allow the use of symbols in text that would otherwise be treated as code.
+ */
+$interpolation = 'name is $varName';
+
+
+var_dump($interpolation);
 
 /**
  * It's suggested good practice to encase interpolation references in braces.
@@ -45,9 +62,63 @@ $interpolationBraces = "{$interpolation}";
  */
 $concatenation = $varName . $varName;
 
+// HEREDOC
+/**
+ * For defining larger strings, it's can make more sense to use a HEREDOC.
+ *
+ * With a Heredoc, you indicate the start and endpoints of text within the file, and the evaluator
+ * does the rest.
+ *
+ * Just like any other TODO
+ *
+ * START
+ * Heredoc begins with '<<<' followed by an identifier token.
+ *
+ * END
+ * Closing a heredoc is a bit more picky.
+ * To close a heredoc, you just type the identifier again, however;
+ *  - It must be preceeded by a newline character        (It must be on a new line)
+ *  - It must begin on the first column of a new line    (Directly after the newline character. It cannot be indented.)
+ *  - It must be followed by a newline OR semicolon.     (If it's within other syntax, it must be placed on the line below the closing heredoc.
+ *                                                        It can't even be followed by whitespace or a comment.)
+ */
+$simpleHeredoc =<<<SIMPLE
+    This is a simple HEREDOC!
+SIMPLE;
+
+$inlineHereDoc = array(<<<EOD
+value1,
+value2,
+value3,
+value4
+EOD
+); // Both this closing syntax for the array and this comment must be placed below.
+var_dump($inlineHereDoc);
+
+$simpleHeredoc = <<<"StringSymbol"
+Double quote strings are also valid
+identification!
+StringSymbol;
+
+
+// NOWDOC
+/**
+ * Just like with single quoted strings, as explained before, nowdoc does not perform any evaluation;
+ * allowing the use of symbols that would otherwise be treated as code.
+ *
+ * It's essentially the same as a Heredoc, with one quirk;
+ * With no evaluation, it cannot evaluate an identification symbol, thus it must be identified by a
+ * single quoted string instead.
+ *
+ * This quirk is used to differentiate between a NOWDOC and a HEREDOC.
+ */
+$simpleNowDoc = <<<'SIMPLE'
+This is a $valid string literal.
+Nothing will be evaluated!
+Even \\ and \ !
+SIMPLE;
+
 // Arrays
-
-
 /**
  * Inherently creates an array instance.
  */
@@ -80,7 +151,7 @@ $_7          = $pandas[2];
 $_3_2        = $pandas[3];
 
 $outOfBounds = $pandas[4];
-// Exception given => PHP Notice:  Undefined offset: 4 in <FILENAME> on line 33
+// Exception given => PHP Notice:  Undefined offset: 4 in <FILENAME> on line ##
 
 /*
  * A Notice is not quite an error, but it's not ideal.
@@ -99,7 +170,7 @@ $numbers = [
 
 // These values cannot be gotten by index.
 echo $numbers[0];
-// PHP Notice:  Undefined offset: 0 in <FILENAME> on line 101
+// PHP Notice:  Undefined offset: 0 in <FILENAME> on line ##
 
 // Dump value by key
 echo $numbers['three'];
@@ -119,15 +190,103 @@ $primes = $numbers['prime'];
 echo $primes[2];
 
 // Is the same as
-echo $primes['prime'][2];
+echo $numbers['prime'][2];
 
 /**
  * JS Foreach
- * 
+ *
  * foreach (Source as Target.){}
  * Target can be preceeded by '&' to pass it as a refference, rather than a value.
- * 
+ *
  */
-foreach($months as &$month){
+$months = [];
+foreach($months as $month){
     echo $month;
 }
+
+/**
+ * Classing objects
+ */
+
+/**
+ * Simple class.
+ */
+class PetName
+{
+    // Custom class property.
+    private $pet_name;
+
+    /**
+     * Constructor
+     *
+     * Used to initalise this class instance, and prepare it for use.
+     */
+    public function __construct() {}
+
+    /**
+     * Deconstructor
+     *
+     * The antithesis of the construtor, used to tare down an instance.
+     * Since PHP has a garbage collector, this doesn't have to be implemented in every class.
+     *
+     * It's intended use is for classes that require a graceful shutdown, for example because they're
+     * using resources, or are running coroutines.
+     *
+     * The deconstructor would then be used to signal for its related processes to be stopped, and any resources
+     * it's holding open, such as I/O streams or network connections, to be closed gracefully.
+     */
+    public function __destruct() {}
+
+    /**
+     * Mutator / Setter.
+     *
+     * From the object oriented paradigm, asserts local control
+     * over the value within a private property.
+     *
+     * Mutators should always be used to unify any modifications that may be made
+     * to a property later on, even if there is no unique functionality yet.
+     */
+    public function setPetName($pet_name_to_store)
+    {
+        $this->pet_name = $pet_name_to_store;
+    }
+
+    /**
+     * Getter.
+     *
+     * Allows external reading of a private property.
+     * @return mixed
+     */
+    public function getPetName()
+    {
+        return $this->pet_name;
+    }
+}
+
+/**
+ * Creating an object instance.
+ *
+ * Create a new variable token as you normally would in PHP,
+ * then create a new object instance just like you would in Java
+ * using the NEW keyword.
+ *
+ * Then we're storing the resulting object from the NEW
+ * instance inside the token we just created.
+ *
+ * $variableToken = new PetName();
+ */
+$pet = new PetName();
+
+/**
+ * Accessing members
+ *
+ * In java, a period ( . ) is indicative of referencing a member within an object.
+ * However, in PHP, a period is used for string concatenation only.
+ *
+ * This leaves PHP having to find another symbol to access object members,
+ * settling with the two character lambda arrow ( -> ).
+ *
+ * JAVA : object.member
+ * PHP  : object->member
+ */
+$pet -> setPetName("yeet");
