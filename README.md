@@ -1,4 +1,4 @@
-# Language-Reference-Sheets
+# Language Reference Sheets
 Sheets that summarise my knowledge of various languages into dense sheets for quick reference or study.
 
 ### These sheets are not for people just getting started; they will not teach you to code.
